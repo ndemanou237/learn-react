@@ -10,31 +10,63 @@ const todos = [
 ]
 
 function App() {
-    const [person ,  setperson] = useState({
-      firstname: 'john',
-      lastname: 'donald',
-      age: 18
-    })
-    const [count, setCount] = useState(0)
+  // use the usestate
 
-    const incrementAge = () => {
-        // person.age++
-        // setperson(person)
-        setperson({...person, age : person.age + 1})
-    } 
+    // const [person ,  setperson] = useState({
+    //   firstname: 'john',
+    //   lastname: 'donald',
+    //   age: 18
+    // })
+    // const [count, setCount] = useState(0)
 
-    const incrementCount = () =>{
-      setCount(count + 1)
-    }
+    // const incrementAge = () => {
+    //     // person.age++
+    //     // setperson(person)
+    //     setperson({...person, age : person.age + 1})
+    // } 
+
+    // const incrementCount = () =>{
+    //   setCount(count + 1)
+    
   
-  return  <>
+  // return  <>
 
-    <p>age de {person.firstname} : {person.age}</p>
-    <button onClick={incrementAge}>gagner une année</button>
-    <button onClick={incrementCount}>incrementer {count}</button>
+  //   <p>age de {person.firstname} : {person.age}</p>
+  //   <button onClick={incrementAge}>gagner une année</button>
+  //   <button onClick={incrementCount}>incrementer {count}</button>
  
 
-  </>
+  // </>
+
+  // const [firstname, setFirstname] = useState('john dae')
+
+  // const handleChange = (e) =>{
+  //   setFirstname(e.target.value)
+  // }
+
+  // const reset = () => {
+  //   setFirstname('')
+  // }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(new FormData(e.target))
+  }
+
+  const [checked, setChecked] = useState(true)
+  const toogleCheck = () =>{
+    setChecked(!checked)
+  }
+
+  return <form onSubmit={handleSubmit}>
+    <input type="text" name="firstname" defaultValue="maman"/>
+    <input type="checkbox" checked={checked} onChange={toogleCheck} />
+    <button disabled={!checked}>Envoyer</button>
+    
+
+    
+
+  </form>
   
 }
 
