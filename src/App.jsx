@@ -1,20 +1,43 @@
+import { useState } from "react"
 
 const title = "Bonjour a vous tous chez citoyen"
 const test = {color:'red', backgroundColor:'aqua'}
+const showtitle = true
+const todos = [
+  'apprendre react',
+  'lire',
+  'visionnez'
+]
 
 function App() {
+    const [person ,  setperson] = useState({
+      firstname: 'john',
+      lastname: 'donald',
+      age: 18
+    })
+    const [count, setCount] = useState(0)
 
-  const clicked = (e) =>{
-    console.log(e)
-    alert('vous avez cliquez sur le h1')
-  }
-  return  <div>
-    <h1 onClick={clicked} id='title' className='title' style={test}>{title}</h1>
-    <input type="text" />
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem voluptates enim dicta, molestias ullam tenetur corporis ipsum porro quisquam architecto provident quia quidem. Illo consequuntur animi reiciendis quod maiores magnam.</p>
+    const incrementAge = () => {
+        // person.age++
+        // setperson(person)
+        setperson({...person, age : person.age + 1})
+    } 
 
-  </div>
+    const incrementCount = () =>{
+      setCount(count + 1)
+    }
+  
+  return  <>
+
+    <p>age de {person.firstname} : {person.age}</p>
+    <button onClick={incrementAge}>gagner une année</button>
+    <button onClick={incrementCount}>incrementer {count}</button>
+ 
+
+  </>
   
 }
+
+
 
 export default App
