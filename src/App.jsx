@@ -1,75 +1,97 @@
 import { useState } from "react"
 
-const title = "Bonjour a vous tous chez citoyen"
-const test = {color:'red', backgroundColor:'aqua'}
-const showtitle = true
-const todos = [
-  'apprendre react',
-  'lire',
-  'visionnez'
-]
+// const { useState } = require("react");
 
-function App() {
-  // use the usestate
+// const title = "Bonjour a vous tous chez citoyen"
+// const test = {color:'red', backgroundColor:'aqua'}
+// const showtitle = true
+// const todos = [
+//   'apprendre react',
+//   'lire',
+//   'visionnez'
+// ]
 
-    // const [person ,  setperson] = useState({
-    //   firstname: 'john',
-    //   lastname: 'donald',
-    //   age: 18
-    // })
-    // const [count, setCount] = useState(0)
+// function App() {
+//   // use the usestate
 
-    // const incrementAge = () => {
-    //     // person.age++
-    //     // setperson(person)
-    //     setperson({...person, age : person.age + 1})
-    // } 
+//     // const [person ,  setperson] = useState({
+//     //   firstname: 'john',
+//     //   lastname: 'donald',
+//     //   age: 18
+//     // })
+//     // const [count, setCount] = useState(0)
 
-    // const incrementCount = () =>{
-    //   setCount(count + 1)
+//     // const incrementAge = () => {
+//     //     // person.age++
+//     //     // setperson(person)
+//     //     setperson({...person, age : person.age + 1})
+//     // } 
+
+//     // const incrementCount = () =>{
+//     //   setCount(count + 1)
     
   
-  // return  <>
+//   // return  <>
 
-  //   <p>age de {person.firstname} : {person.age}</p>
-  //   <button onClick={incrementAge}>gagner une année</button>
-  //   <button onClick={incrementCount}>incrementer {count}</button>
+//   //   <p>age de {person.firstname} : {person.age}</p>
+//   //   <button onClick={incrementAge}>gagner une année</button>
+//   //   <button onClick={incrementCount}>incrementer {count}</button>
  
 
-  // </>
+//   // </>
 
-  // const [firstname, setFirstname] = useState('john dae')
+//   // const [firstname, setFirstname] = useState('john dae')
 
-  // const handleChange = (e) =>{
-  //   setFirstname(e.target.value)
-  // }
+//   // const handleChange = (e) =>{
+//   //   setFirstname(e.target.value)
+//   // }
 
-  // const reset = () => {
-  //   setFirstname('')
-  // }
+//   // const reset = () => {
+//   //   setFirstname('')
+//   // }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(new FormData(e.target))
-  }
+//   const handleSubmit = (e) => {
+//     e.preventDefault()
+//     console.log(new FormData(e.target))
+//   }
 
-  const [checked, setChecked] = useState(true)
-  const toogleCheck = () =>{
-    setChecked(!checked)
-  }
+//   const [checked, setChecked] = useState(true)
+//   const toogleCheck = () =>{
+//     setChecked(!checked)
+//   }
 
-  return <form onSubmit={handleSubmit}>
-    <input type="text" name="firstname" defaultValue="maman"/>
-    <input type="checkbox" checked={checked} onChange={toogleCheck} />
-    <button disabled={!checked}>Envoyer</button>
+//   return <form onSubmit={handleSubmit}>
+//     <input type="text" name="firstname" defaultValue="maman"/>
+//     <input type="checkbox" checked={checked} onChange={toogleCheck} />
+//     <button disabled={!checked}>Envoyer</button>
     
 
     
 
-  </form>
+//   </form>
   
+// }
+
+
+
+// export default App
+
+function App() {
+  const [isTermAccepted, setIsTermAccepted] = useState(false)
+
+  return <form>
+    <CGUChecbox checked={isTermAccepted} onCheck={setIsTermAccepted} />
+    <button disabled={!isTermAccepted}>Envoyer le formulaire</button>
+  </form>
 }
 
-
+function CGUChecbox ({checked, onCheck}){
+  return <div>
+    <label>
+      <input type="checkbox" onChange={(e) => onCheck(e.target.checked)} checked={checked} />
+      Accepter les condition
+    </label>
+  </div>
+}
 
 export default App
