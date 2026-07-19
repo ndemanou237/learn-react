@@ -126,6 +126,7 @@ const PRODUITS = [
 function App(){
   return <div className="m-3">
     <SearchBar />
+    <ProductTable products={PRODUITS} />
   </div>
 
 }
@@ -134,9 +135,23 @@ function SearchBar(){
   return <div>
     <div className="mb-3">
       <Input value="" onChange={() => null} placeholder="Rechercher..." ></Input>
-      <Checkbox checked={false} onChange={() => null} label="N'afficher que les produits en stock" />
+      <Checkbox id="stocked" checked={false} onChange={() => null} label="N'afficher que les produits en stock" />
     </div>
   </div>
+}
+
+function ProductTable ({products}){
+  return <table className="w-1/2">
+    <thead>
+      <tr className="flex gap-5 justify-between ">
+        <th>Nom</th>
+        <th>Prix</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
 }
 
 export default App 
