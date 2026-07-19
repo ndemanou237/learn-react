@@ -1,10 +1,10 @@
 
 
-export function ProductRow ({produit}){
+export function ProductRow ({product}){
 
-    const style = produit.stocked ? undefined : {color: 'red'}
+    const style = product.stocked ? undefined : {color: 'red'}
     return <tr>
-        <td style={style}>{produit.name}</td>
-        <td>{produit.price}</td>
+        <td style={style}>{product.name}</td>
+        <td>{product.price}</td>
     </tr>
 }

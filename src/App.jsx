@@ -1,6 +1,8 @@
 import { useState } from "react"
 import {Input} from "./components/forms/Input.jsx";
 import { Checkbox } from "./components/forms/checkbox.jsx";
+import { ProduitCategoryRow } from "./components/forms/produits/produitCategoryRow.jsx";
+import { ProductRow } from "./components/forms/produits/ProduitRow.jsx";
 <link rel="stylesheet" href="output.css" />
 // import * from "output.css"
 
@@ -141,6 +143,17 @@ function SearchBar(){
 }
 
 function ProductTable ({products}){
+
+  const rows = []
+  let lasCategory = null
+  for (let product of products){
+    if (product.category !== lasCategory ){
+      rows.push(<ProduitCategoryRow key={product.category} name={product.category} />)
+    }
+    lasCategory = product.category
+    rows.push(<ProductRow key={product.name} product={product} />)
+  }
+
   return <table className="w-1/2">
     <thead>
       <tr className="flex gap-5 justify-between ">
@@ -149,6 +162,7 @@ function ProductTable ({products}){
       </tr>
     </thead>
     <tbody>
+      {rows}
 
     </tbody>
   </table>
